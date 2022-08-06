@@ -1,13 +1,11 @@
-# form-generator
-
-> Made with create-react-library
+# mui-hook-form-generator
 
 [![NPM](https://img.shields.io/npm/v/form-generator.svg)](https://www.npmjs.com/package/form-generator) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save form-generator
+npm i --save mui-hook-form-generator
 ```
 
 ## Usage
@@ -15,12 +13,22 @@ npm install --save form-generator
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'form-generator'
-import 'form-generator/dist/index.css'
+import FormGenerator from 'mui-hook-form-generator'
+import { useForm } from 'react-hook-form'
 
 class Example extends Component {
+  const { control } = useForm({})
   render() {
-    return <MyComponent />
+    return <FormGenerator
+    control={control}
+    rootProps={{ spacing: 2 }}
+    child={[
+      { type: "text", name:"name", label: "Name", gridProps: { xs: 12 }},
+      { type: "select", name:"selectField", label: "Select Field", gridProps: { xs: 12 }},
+      { type: "password", name:"password", label: "Password", gridProps: { xs: 12 }},
+      { type: "date", name:"date", label: "Date", gridProps: { xs: 12 }},
+    ]}
+    />
   }
 }
 ```
